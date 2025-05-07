@@ -1,10 +1,16 @@
 import yfinance as yf
 from tabulate import tabulate
 from simple_colors import red, green
+from datetime import datetime
 
 SYMBOLS = ["VOO", "SPY", "VT", "QQQ", "SCHD", "VGK", "XLE", "VB", "VTSAX", "VTI", "MKL", "RKLB", "CNX", "CLF", "HCC", "ADM", "ITA", "IAT", "BAM", "BN", "EWZ", "GLD", "BTC-USD", "CL=F", "GC=F", "SI=F", "ZIM", "TSLA", "IBIT", "FBTC", "MSTR", "IDGT"]
 
 HEADERS=['Symbol', 'Price', '$ Change', '% Change']
+
+
+def get_current_date_and_time():
+  return datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
 
 def round_to_two_decimals(number):
   """Rounds a number to two decimal places and returns a string representation,
@@ -29,4 +35,5 @@ for sym in SYMBOLS:
     rows.append(row)
 
 
+print(get_current_date_and_time())
 print(tabulate(rows, HEADERS, disable_numparse=True, colalign=("left", "right", "right", "right")))
